@@ -7,13 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title></title>
 </head>
-<body> 
+<body > 
 
-<header class="bg-black	"> 
+<header class="bg-black"  > 
     <div class="flex" style="padding: 8px; padding-top: 10px;">
-        <h5 class="text-white">Carrers</h5>
-        <button id="btn-home" type="button" class="btn btn bg-pink-700 ml-3"  >Home</button>
-        <button id="btn-create" type="button" class="btn btn bg-pink-700 ml-3" >Create Job</button>
+        <h5 class="text-white p-1">Carrers</h5>
+        <button id="btn-home" type="button" class="btn btn bg-cyan-500 hover:bg-cyan-600 ...  text-slate-50  font-semibold p-1 ml-2 rounded w-[60px]"  >Home</button>
+        <button id="btn-create" type="button" class="btn btn bg-cyan-500 hover:bg-cyan-600 ...  text-slate-50  font-semibold ml-3 p-1 rounded " >Create Job</button>
       </div>
       <div class="d-flex align-items-center ">
         <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
@@ -22,29 +22,59 @@
 
 <!-- //seccion principal// -->
 <section id="nav" class="">
- <div class="flex-col  bg-white rounded-md" >
+  
+ <div class="flex-col bg-white rounded-md  " >
     <nav class="flex justify-center ...  h-50  bg-gradient-to-r from-purple-500 to-pink-500   " id="nav">
-        <div class="flex justify-content-center h-50" style="padding-top: 80px;">
-        <select class="form-select m-6" aria-label="Default select example" style="margin: 6px;" id="location">
+        <div class="flex justify-content-center h-50" style="padding: 50px;">
+        <select class="form-select m-6 rounded w-[150px]" aria-label="Default select example" style="margin: 6px;" id="location">
             <option selected>Location</option>
           </select>   
-          <select class="form-select" aria-label="Default select example" style="margin: 6px;" id="señority">
+          <select class="form-select rounded  w-[150px]" aria-label="Default select example" style="margin: 6px;" id="señority">
             <option selected>Gender</option>        
           </select>  
-          <select class="form-select" aria-label="Default select example"style="margin: 6px;" id="category" >
+          <select class="form-select rounded w-[150px] " aria-label="Default select example"style="margin: 6px;" id="category" >
             <option selected>Category</option>      
           </select>
-          <button type="button" class=" bg-gradient-to-r from-sky-500 to-indigo-500" style="margin: 6px;">Search</button>
-          <button type="button" class="bg-white" style="margin: 6px; border-color: rgb(92, 3, 72) ; ">Clear</button>
+          <button type="button" class=" bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded" style="margin: 6px;" style="margin: 6px;">Search</button>
+          <button type="button" class="bg-white  bg-cyan-500 hover:bg-cyan-600 ... p-1 text-black  font-semibold border-double border-2 border-sky-500 rounded" style="margin: 6px;" style="margin: 6px;">Clear</button>
      </div>
     </nav>
 
+
+
+<!-- //--------------contenedor cards-------------------// -->
+<main class="m-4 ">
+<div class="  row gap-3 view justify-content-center w-full  " id="containers">
+  <!-- ---card js-- -->
+  <div class="card m-2   " id="containers-card" style="width: 18rem; border:  solid rgba(0,0,0,.125)"> 
+    <div class="card-body m-2">
+     <h5 class="card-title">Card title</h5>
+     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+     <div class="flex">
+         <p style="background-color: rgb(238, 49, 245); margin: 4px; ">dsdsdsddsd</p>
+         <p style="background-color: rgb(238, 49, 245); margin: 4px;">dsdsd</p>
+         <p  style="background-color: rgb(238, 49, 245); margin: 4px;">dsdsd </p>
+     </div>
+     <button type="button" class="bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded " style="margin: 6px;">See Details</button>
+      <div class="">
+        <button type="button" class="btn bg-green-700 text-black font-normal p-1  rounded " style="margin: 6px;">Edit-job</button>
+        <button type="button" class="btn bg-rose-600 text-black font-normal p-1 rounded" style="margin: 6px;">Delete-job</button>
+      </div>
+   </div> 
  </div>
+
+
+
+
+
+<!---------------------------------------- -->
+</div>
+</main>
 </section>
 <!-- //--------------------------------section form-------------// -->
-<section id="form-job" class=" hidden bg-slate-200 py-16 items-center w-full space-x-8 rounded-md"  >
+<section id="form-job" class=" hidden py-16 items-center w-full space-x-8 rounded-md  bg-cyan-100"  >
 <main>
-  <div class=" bg-slate-200 lg:[90%] flex justify-center sm:flex-none ">
+  <div class="  lg:[90%] flex justify-center sm:flex-none bg-cyan-100 ">
   <div class=" m-4 p-5 sm:w-[60%]  bg-white rounded-md">
   <form action="">
     <div>
@@ -90,7 +120,7 @@
 </div>
 
 
-
+<button id="btn-submit" type="button" class="bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded " style="margin: 6px;">Submit</button>
 
 
   </form>
