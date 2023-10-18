@@ -40,12 +40,21 @@ const response = await  fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/j
 
 
 
-// FUNCION DELETE TRABAJO//
 
 
+const deleteJob = async (id) =>{
+const response = await fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id}`,{
+    method: "DELETE",
+}).then(response => {
+    if (response.ok) {
+        return response.json();
+    }
+})
+console.log(response)
+
+}
 
 
-// }
 
 
 

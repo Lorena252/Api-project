@@ -26,14 +26,27 @@ const saveJob = () =>{
       // languages: $("#languajes").value,
     
     }
-    console.log(newJob)
 addJob(newJob)
 }
 
 
-const renderJobs = (data) =>{
-   for (const {id, name,image,description,location,category,seniority} of data){
 
+const cleanForm = () =>{
+   $("#name-form").value = ""
+   $("#image-form").value =""
+   $("#description-form").value =""
+   $("#location-form").value = ""
+   $("#category-form").value = ""
+   $("#señority-form").value = ""
+   $("#vacation-form").value = ""
+   $("#health-form").value = ""
+   $("#internet-form").checked = ""
+$("#salary-form").value= ""
+}
+
+const renderJobs = (data) =>{
+  cleanContainer("#containers")
+   for (const {id, name,image,description,location,category,seniority} of data){
      $("#containers").innerHTML += `
      <div class="card m-2   " id="containers-card" style="width: 18rem; border:  solid rgba(0,0,0,.125)"> 
      <div class="card-body m-2">
@@ -46,9 +59,9 @@ const renderJobs = (data) =>{
           <p  style="background-color: rgb(238, 49, 245); margin: 4px;">${seniority} </p>
       </div>
       <button type="button" class="bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded id="${id}" style="margin: 6px;">See Details</button>
-       <div class="invisible">
-         <button type="button" class="btn bg-green-700  hover:bg-green-500  text-black font-normal p-1  rounded " style="margin: 6px;">Edit-job</button>
-         <button type="button" class="btn bg-rose-600 text-black font-normal p-1 rounded" style="margin: 6px;">Delete-job</button>
+       <div class="">
+         <button type="button" class="btn bg-green-700  hover:bg-green-500  text-black font-normal p-1  rounded " style="margin: 6px;"  onclick="editJob('${id}')"   >Edit-job</button>
+         <button type="button" class="btn bg-rose-600 text-black font-normal p-1 rounded" style="margin: 6px;" onclick="jobDelete('${id}')"   ">Delete-job</button>
        </div>
     </div> 
   </div>
@@ -60,10 +73,36 @@ const renderJobs = (data) =>{
   
 
 
+//Delete job//
+const jobDelete = (id) => {
+deleteJob(id)
+getJobs()
+ };
+
+
+
+
+
+
+//Edit Job//
+
+const editJob = (id) =>{
+console.log(id)
+}
+
+
+
+//
+
+
+
+
+
 
 $("#btn-create").addEventListener("click", () =>{
 show("#form-job")
 hide("#nav")
+
 })
 
 
@@ -75,5 +114,7 @@ $("#btn-home").addEventListener("click", () =>{
 
  $("#btn-submit").addEventListener("click", () => {
     saveJob()
-
+    hide("#form-job")
+    show("#nav")
+ cleanForm()
  })
