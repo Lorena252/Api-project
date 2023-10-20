@@ -25,67 +25,28 @@ const response = await  fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/j
   }
 }
 
-const formData = async (id) =>{
-const response = await fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id} `)
-.then(response => {
-    if (response.ok) {
-        return response.json();
-    }
-  //   // handle error
-  //  }).then(task => {
-      
-  // }).catch(error => {
-  //   // handle error
-   })
 
- $("#name-form").value = response.name,
- $("#image-form").value = response.image,
- $("#description-form").value = response.description,
- $("#location-form").value = response.location,
- $("#category-form").value = response.category,
- $("#señority-form").value = response.seniority,
-//  $("#vacation-form").value = response.vacation
-//  $("#health-form").value = response.health_ensurance,
-//  $("#internet-form").checked = response.long_term,
-$("#salary-form").value= response.salary
-console.log(response)
-return response
+//cargo datos segun id en el form//
+const formData = async (id) =>{
+const response = await fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id}`)
+const data = await response.json()
+console.log(id)
+console.log(data)
+btnEditForm(data,id)
 }
 
+////////editar job///////////
+const edit = async (id) =>{
+    const response = await fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id}`)
+    const data = await response.json()
+    console.log(data)
+    console.log(id)
+//  editJob(data,id)
 
-//FUNCION EDITAR TRABAJO//
-// const editedJob = async (id) =>{
-// const response = await fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id} `, {
-//   method: 'PUT', // or PATCH
-//   headers: {'content-type':'application/json'},
-//   body: JSON.stringify({
-//     name : $("#name-form").value,
-//     image : $("#image-form").value,
-//     description: $("#description-form").value,
-//     location: $("#location-form").value,
-//     category: $("#category-form").value,
-//     seniority: $("#señority-form").value,
-//     // benefits: {
-//     //   vacation: $("#vacation-form").value,
-//     //     health_ensurance: $("#health-form").value,
-//     //     internet_paid: $("#internet-form").checked,
-//     //  },
-//     salary:  Number($("#salary-form").value)
 
-//   })
-// }).then(response => {
-//   if (response.ok) {
-//       return response.json();
-//   }
-// //   // handle error
-// //  }).then(task => {
-    
-// // }).catch(error => {
-// //   // handle error
-//  })
+}
 
-// return response
-// }
+/////////////////////
 
 
 
@@ -95,9 +56,14 @@ const response = await fetch(`https://65271cad917d673fd76d6b9b.mockapi.io/api/jo
 }).then(response => {
     if (response.ok) {
         return response.json();
+        
     }
 })
-console.log(response)
+hide("#popup-modal")
+hide("#detail")
+show("#containers")
+getJobs()
+
 }
 
 //mostrar detalle//
@@ -109,9 +75,6 @@ const detailJob = async (id) =>{
     
     },2000);
 }
-
-
-
 
 
 
