@@ -60,21 +60,17 @@ const renderJobs = (data) => {
     seniority,
   } of data) {
     $("#containers").innerHTML += `
-     <div class="card m-2   " id="containers-card" style="width: 18rem; border:  solid rgba(0,0,0,.125)"> 
-     <div class="card-body m-2">
-      <h5 class="card-title">${name}</h5>
-      <img src=${image}>
+     <div class="card m-2   " id="containers-card" style="width: 15rem; border:  solid rgba(0,0,0,.125)"> 
+     <div class="card-body m-2  ">
+      <h5 class="card-title text-center font-serif text-base font-semibold ">${name}</h5>
+      <img  src=${image}  >
       <p class="card-text">${description}</p>
-      <div class="flex">
-          <p style="background-color: rgb(238, 49, 245); margin: 4px; ">${location}</p>
-           <p  style="background-color: rgb(238, 49, 245); margin: 4px;">${seniority} </p>
-          <p style="background-color: rgb(238, 49, 245); margin: 4px;">${category} </p>       
+      <div>
+          <p class="text-center ... bg-stone-300 m-1" >${location}</p>
+           <p class="text-center ... bg-stone-300 m-1"  >${seniority} </p>
+          <p class="text-center ... bg-stone-300 m-1" >${category} </p>       
       </div>
       <button type="button" class=" bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded id="${id}" onclick="detailJob(${id})" style="margin: 6px;">See Details</button>
-       <div id="btn-edit-delete" class="hidden">
-         <button type="button" class="btn bg-green-700  hover:bg-green-500  text-black font-normal p-1  rounded " style="margin: 6px;"   >Edit-job</button>
-         <button type="button" class="btn bg-rose-600 text-black font-normal p-1 rounded" style="margin: 6px;"  ">Delete-job</button>
-       </div>
     </div> 
   </div>
      `;
@@ -84,8 +80,6 @@ const renderJobs = (data) => {
 
 const showModal = (id) => {
   show("#popup-modal");
-  // $("#btn-delete-job").setAttribute("id", id);
-  // $("#confirm-delete").setAttribute("data-id", id);
   $("#buttons").innerHTML = ` 
 <button id="confirm-delete" onclick="deleteJob(${id})" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
 Yes, I'm sure
@@ -100,9 +94,9 @@ const jobDelete = (id) => {
 };
 
 const confirmEdit = () => {
-//   let jobId = $("#btn-edit-job").getAttribute("data-id");
+  //   let jobId = $("#btn-edit-job").getAttribute("data-id");
   let editJob = {
-   //  id: jobId,
+    //  id: jobId,
     name: $("#name-form").value,
     image: $("#image-form").value,
     description: $("#description-form").value,
@@ -120,8 +114,8 @@ const confirmEdit = () => {
   };
   console.log(editJob);
   $("#btn-edit-job").addEventListener("click", () => {
-  confirmJob(id,editJob)
-});
+    confirmJob(id, editJob);
+  });
 };
 
 ////////////carga datos al form////////
@@ -147,9 +141,6 @@ const btnEditForm = (data, id) => {
   // `
 };
 
-//boton editar del formulario//
-
-
 const detailCard = ({
   id,
   name,
@@ -160,27 +151,28 @@ const detailCard = ({
   seniority,
   languages,
 }) => {
-  show("#btn-edit-delete");
   show("#container"), show("#detail");
   hide("#containers"),
     ($("#detail").innerHTML = `
-<div class="card ml-2 mt-2" id="containers-card" style="width: 18rem; border:  solid rgba(0,0,0,.125)"> 
+<div class="card ml-2 mt-2" id="containers-card" style="width: 22rem; border:  solid rgba(0,0,0,.125)"> 
 <div class="card-body m-2">
- <h5 class="card-title">${name}</h5>
+ <h5 class="card-title  text-center font-serif text-base font-semibold ">${name}</h5>
+ <div class="flex justify-center">
  <img src=${image}>
+ </div>
  <p class="card-text">${description}</p>
- <div class="flex">
-     <p style="background-color: rgb(238, 49, 245); margin: 4px; ">${location}</p>
-     <p  style="background-color: rgb(238, 49, 245); margin: 4px;">${seniority}</p>
-     <p style="background-color: rgb(238, 49, 245); margin: 4px;">${category} </p>
+ <div class="m-2">
+     <p class="text-center ... bg-stone-300 m-1"  margin: 4px; ">${location}</p>
+     <p class="text-center ... bg-stone-300 m-1"  margin: 4px;">${seniority}</p>
+     <p class="text-center ... bg-stone-300 m-1"  margin: 4px;">${category} </p>
  </div>
  <div>
- <p class="text-lg font-semibold text-[#4a4a4a7"  >Languages </p>
-      <p class="pl-2" style="background-color: rgb(238, 49, 245); margin: 4px; ">${languages}</p>
+ <p class="m-2 text-lg font-semibold text-[#4a4a4a7]">Languages </p>
+      <p class="text-center ...  bg-yellow-200"	margin: 4px; ">${languages}</p>
  </div>
-  <div class="flex">
-    <button type="button" class="btn bg-green-700  hover:bg-green-500  text-black font-normal p-1  rounded " style="margin: 6px;"  onclick="formData('${id}')">Edit-job</button>
-    <button type="button" class="btn bg-rose-600 text-black font-normal p-1 rounded" style="margin: 6px;" onclick="showModal(${id})"" >Delete-job </button>
+  <div class="flex justify-end mt-2">
+    <button type="button" class="btn bg-green-700  hover:bg-green-500  text-black font-normal p-1  rounded " style="margin: 6px;"  onclick="formData('${id}')">Edit</button>
+    <button type="button" class="btn bg-rose-600 text-black font-normal p-1 rounded" style="margin: 6px;" onclick="showModal(${id})"" >Delete </button>
   </div>
 </div> 
 </div>`);
@@ -221,6 +213,10 @@ const filterOptions = (data) => {
   $("#señority").innerHTML = "";
   $("#location").innerHTML = "";
   $("#category").innerHTML = "";
+  $("#señority").innerHTML = `<option selected>Señority</option>`;
+  $("#location").innerHTML = `<option selected>Location</option>`;
+  $("#category").innerHTML = `<option selected>Category</option>`;
+
   const optionsLocations = [];
   const optionsSeniority = [];
   const optionsCategory = [];
@@ -247,51 +243,28 @@ const filterOptions = (data) => {
   });
 };
 
-//Filtros opcion 1//
-
-// // const filterLocation = (data) =>{
-// //    let locationOp =  $("#location").value
-// //    let filteredLocations = data.filter(
-// //       (job) => job.location === locationOp
-// //       )
-// // return filteredLocations
-// // }
-
-// // const filterSeniority= (data) =>{
-// // let señority = $("#señority").value
-// // let filterSeñority = data.filter(
-// //    (job) => job.seniority === señority
-// //    )
-// // return filterSeñority
-// // }
-
-// // const filterCategory = (data) =>{
-// //    let category = $("#category").value
-// //    let filterCategory = data.filter(
-// //       (job) => job.category === category
-// //    )
-// //    return filterCategory
-// // }
-
-//filtros opcion 2 (si)//
 const filtros = (data) => {
-  if (!$("#location").value == "") {
+  if ($("#location").value !== "Location") {
     let locationOp = $("#location").value;
     let filteredLocations = data.filter((job) => job.location === locationOp);
     renderJobs(filteredLocations);
-  } else if (!$("#señority").value == "") {
+    show("#containers");
+  } else if ($("#señority").value !== "Señority") {
     let señority = $("#señority").value;
     let filterSeñority = data.filter((job) => job.seniority === señority);
     renderJobs(filterSeñority);
+    show("#containers");
   }
-  if (!$("#category").value == "") {
+  if ($("#category").value !== "Category") {
     let category = $("#category").value;
     let filterCategory = data.filter((job) => job.category === category);
     renderJobs(filterCategory);
+    show("#containers");
   }
 };
 
 $("#btn-create").addEventListener("click", () => {
+  cleanForm();
   show("#form-job");
   hide("#nav");
   hide("#btn-edit-job");
@@ -315,9 +288,6 @@ $("#btn-submit").addEventListener("click", () => {
 });
 
 $("#clear").addEventListener("click", () => {
-  $("#location").value = "Location";
-  $("#category").value = "Category";
-  $("#señority").value = "Señority";
   getJobs();
 });
 
@@ -335,5 +305,9 @@ $("#category").addEventListener("change", () => {
 });
 
 $("#search").addEventListener("click", () => {
-  filtersOptions();
+  hide("#containers");
+  show("#spinner");
+  setTimeout(() => {
+    filtersOptions();
+  }, 2000);
 });

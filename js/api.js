@@ -9,31 +9,12 @@ const getJobs = async () => {
   hide("#detail");
   setTimeout(() => {
     renderJobs(data);
-    console.log(data);
     filterOptions(data);
     show("#containers");
     hide("#popup-modal");
     hide("#detail");
   }, 2000);
 };
-
-//filtros 2//
-// $("#location").addEventListener("change", () =>{
-//    const miFunc =  filterLocation(data)
-//    renderJobs(miFunc)
-//  })
-
-// $("#señority").addEventListener("change", () =>{
-//     const selectedSeñority = filterSeniority(data)
-//     renderJobs(selectedSeñority)
-// })
-
-// $("#category").addEventListener("change", () =>{
-//     const selectedCategory = filterCategory(data)
-//     renderJobs(selectedCategory)
-// })
-
-//   filtros(data)
 
 const addJob = async (job) => {
   try {
@@ -47,7 +28,6 @@ const addJob = async (job) => {
     );
     const data = await response.json();
     if (data) {
-      //   hide("#containers")
       getJobs();
     }
   } catch (error) {
@@ -65,26 +45,23 @@ const formData = async (id) => {
   btnEditForm(data, id);
 };
 
-const confirmJob = async (id,data) => {
+const confirmJob = async (id, data) => {
   try {
     const response = await fetch(
       `https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id}`,
       {
         method: "PATCH",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({data}),
+        body: JSON.stringify({ data }),
       }
     );
     const data = await response.json();
 
-      console.log(data);
+    console.log(data);
   } catch (error) {
     alert("error");
   }
 };
-
-
-
 
 const deleteJob = async (id) => {
   const response = await fetch(
