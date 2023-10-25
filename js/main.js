@@ -7,7 +7,6 @@ const cleanContainer = (selector) => ($(selector).innerHTML = "");
 
 const saveJob = () => {
   let newJob = {
-    // id : randomId(),
     name: $("#name-form").value,
     image: $("#image-form").value,
     description: $("#description-form").value,
@@ -70,8 +69,10 @@ const renderJobs = (data) => {
            <p class="text-center ... bg-stone-300 m-1"  >${seniority} </p>
           <p class="text-center ... bg-stone-300 m-1" >${category} </p>       
       </div>
+      <div class="flex justify-end ... mt-4">
       <button type="button" class=" bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded id="${id}" onclick="detailJob(${id})" style="margin: 6px;">See Details</button>
-    </div> 
+   </div>
+      </div> 
   </div>
      `;
   }
@@ -93,10 +94,34 @@ const jobDelete = (id) => {
   getJobs();
 };
 
-const confirmEdit = () => {
-  //   let jobId = $("#btn-edit-job").getAttribute("data-id");
-  let editJob = {
-    //  id: jobId,
+const btnEditForm = (data, id) => {
+  $("#btn-edit-job").setAttribute("data-id", id);
+  show("#form-job");
+  show("#btn-edit-job");
+  hide("#btn-submit");
+  hide("#nav");
+  hide("#containers");
+  (id = id),
+    ($("#name-form").value = data.name),
+    ($("#image-form").value = data.image),
+    ($("#description-form").value = data.description),
+    ($("#location-form").value = data.location),
+    ($("#category-form").value = data.category),
+    ($("#señority-form").value = data.seniority),
+    ($("#vacation-form").value = data.benefits.vacation);
+  ($("#health-form").value = data.benefits.health_ensurance),
+    ($("#internet-form").checked = data.benefits.internet_paid),
+    ($("#salary-form").value = data.salary);
+  $("#long-term").checked = data.long_term;
+  $("#btn-edit-job").addEventListener("click", () => {
+    confirmEdit(id);
+  });
+};
+
+const confirmEdit = (id) => {
+  let jobId = $("#btn-edit-job").getAttribute("data-id");
+  let editjob = {
+    id: jobId,
     name: $("#name-form").value,
     image: $("#image-form").value,
     description: $("#description-form").value,
@@ -112,33 +137,7 @@ const confirmEdit = () => {
     long_term: $("#long-term").checked,
     languages: languages(),
   };
-  console.log(editJob);
-  $("#btn-edit-job").addEventListener("click", () => {
-    confirmJob(id, editJob);
-  });
-};
-
-////////////carga datos al form////////
-const btnEditForm = (data, id) => {
-  $("#btn-edit-job").setAttribute("data-id", id);
-  show("#form-job");
-  show("#btn-edit-job");
-  hide("#btn-submit");
-  hide("#nav");
-  hide("#containers");
-  ($("#name-form").value = data.name),
-    ($("#image-form").value = data.image),
-    ($("#description-form").value = data.description),
-    ($("#location-form").value = data.location),
-    ($("#category-form").value = data.category),
-    ($("#señority-form").value = data.seniority),
-    ($("#vacation-form").value = data.benefits.vacation);
-  ($("#health-form").value = data.benefits.health_ensurance),
-    ($("#internet-form").checked = data.benefits.internet_paid),
-    ($("#salary-form").value = data.salary);
-  $("#long-term").checked = data.long_term;
-  // $("#btn-form").innerHTML = `<button id="btn-edit-job" onclick="edit(${id})"   type="button" class=" bg-green-700 text-black font-normal p-1 hover:bg-green-500 ... p-1 font-semibold border-double border-2  rounded on " style="margin: 6px;"  >Edit</button>
-  // `
+  confirmJob(id, editjob);
 };
 
 const detailCard = ({
@@ -295,6 +294,7 @@ $("#señority").addEventListener("change", () => {
   $("#location").value = "Location";
   $("#category").value = "Category";
 });
+
 $("#location").addEventListener("change", () => {
   $("#señority").value = "Señority";
   $("#category").value = "Category";

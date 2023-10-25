@@ -7,6 +7,7 @@ const getJobs = async () => {
   hide("#containers");
   hide("#popup-modal");
   hide("#detail");
+  hide("#form-job");
   setTimeout(() => {
     renderJobs(data);
     filterOptions(data);
@@ -41,23 +42,20 @@ const formData = async (id) => {
     `https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id}`
   );
   const data = await response.json();
-  console.log(data);
   btnEditForm(data, id);
 };
 
-const confirmJob = async (id, data) => {
+const confirmJob = async (id, editjob) => {
   try {
     const response = await fetch(
       `https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id}`,
       {
-        method: "PATCH",
+        method: "PUT",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ data }),
+        body: JSON.stringify(editjob),
       }
     );
-    const data = await response.json();
-
-    console.log(data);
+    let data = await response.json();
   } catch (error) {
     alert("error");
   }
