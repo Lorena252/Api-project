@@ -1,6 +1,5 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
-
 const hide = (selector) => $(selector).classList.add("hidden");
 const show = (selector) => $(selector).classList.remove("hidden");
 const cleanContainer = (selector) => ($(selector).innerHTML = "");
@@ -166,8 +165,7 @@ const detailCard = ({
      <p class="text-center ... bg-stone-300 m-1"  margin: 4px;">${category} </p>
  </div>
  <div>
- <p class="m-2 text-lg font-semibold text-[#4a4a4a7]">Languages </p>
-      <p class="text-center ...  bg-yellow-200"	margin: 4px; ">${languages}</p>
+      <p class="text-center ...  bg-yellow-200"	margin: 4px; mt-4">${languages}</p>
  </div>
   <div class="flex justify-end mt-2">
     <button type="button" class="btn bg-green-700  hover:bg-green-500  text-black font-normal p-1  rounded " style="margin: 6px;"  onclick="formData('${id}')">Edit</button>
@@ -205,6 +203,7 @@ const languages = () => {
   if ($("#php").checked) {
     lenguajes.push(" " + $("#php").value);
   }
+
   return lenguajes;
 };
 

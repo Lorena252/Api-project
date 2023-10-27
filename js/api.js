@@ -36,7 +36,6 @@ const addJob = async (job) => {
   }
 };
 
-//cargo datos segun id en el form//
 const formData = async (id) => {
   const response = await fetch(
     `https://65271cad917d673fd76d6b9b.mockapi.io/api/jobs/${id}`
