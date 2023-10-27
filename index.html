@@ -5,15 +5,192 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title></title>
+    <title>Api Project</title>
 </head>
-<body> 
+<body > 
 
+<header class="bg-black"> 
+    <div class="flex" style="padding: 8px; padding-top: 10px;">
+        <h5 class="text-white p-1">Carrers</h5>
+        <button id="btn-home" type="button" class="btn btn bg-cyan-500 hover:bg-cyan-600 ...  text-slate-50  font-semibold p-1 ml-2 rounded w-[60px]">Home</button>
+        <button id="btn-create" type="button" class="btn btn bg-cyan-500 hover:bg-cyan-600 ...  text-slate-50  font-semibold ml-3 p-1 rounded " >Create Job</button>
+      </div>
+      <div class="d-flex align-items-center">
+        <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
+      </div>
+</header>
 
+<section id="nav" class="">
+ <div class="flex-col bg-white rounded-md">
+    <nav class="flex justify-center ...  h-50  bg-gradient-to-r from-purple-500 to-pink-500" id="nav">
+        <div class="flex justify-content-center h-50 pt-[50px] pb-[50px]">
+        <select class="form-select m-6 rounded w-[100px]" aria-label="Default select example" style="margin: 6px;" id="location">
+            <option value="Location" selected>Location</option>
+          </select>   
+          <select class="form-select rounded  w-[100px]" aria-label="Default select example" style="margin: 6px;" id="señority">
+            <option value="Señority" selected>Señority</option>        
+          </select>  
+          <select class="form-select rounded w-[100px]" aria-label="Default select example"style="margin: 6px;" id="category" >
+            <option value="Category" selected>Category</option>      
+          </select>
+          <button type="button" id="search" class="bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded" style="margin: 6px;" style="margin: 6px;">Search</button>
+          <button type="button" id="clear" class="bg-white  bg-cyan-500 hover:bg-cyan-600 ... p-1 text-black  font-semibold border-double border-2 border-sky-500 rounded" style="margin: 6px;" style="margin: 6px;">Clear</button>
+     </div>
+    </nav>
 
+<main class="m-14 flex items-center ... ">
+<div id="popup-modal" tabindex="-1" class="flex justify-center fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  <div class="relative w-full max-w-md max-h-full">
+      <div class="relative bg-white rounded-lg shadow ">             
+          </button>
+          <div class="p-6 text-center">
+              <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+              </svg>
+              <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
+  <div id="buttons">
+ </div>
+            </div>
+      </div>
+  </div>
+</div>
+<div class="flex flex-wrap gap-3 view  w-full" id="containers">
 
-<script src="js/main.js"> </script>
+</div>
+</main>
+</section>
+
+<section  id="container" class="hidden flex justify-center">
+<div id="detail" class="mb-14" >
+</div>
+</section>
+<section id="form-job" class="hidden py-16 items-center w-full space-x-8 rounded-md">
+<main>
+  <div class="lg:[90%] flex justify-center sm:flex-none">
+  <div class="m-4 p-5 sm:w-[60%]  bg-gradient-to-r from-purple-300 to-pink-300 rounded-md">
+  <form action="">
+    <div>
+      <p class="text-lg font-semibold text-[#4a4a4a7]">Name</p>
+      <input type="text" id="name-form" class="min-w-full mr-0.5 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]" name="name" cols="1" rows="1"><br>
+     </div>
+
+     <div>
+      <p class="text-lg font-semibold text-[#4a4a4a7] ">Description</p>
+      <input  for="large-input"   type="text" id="description-form" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md">
+ 
+  </div>
+  <div>
+    <p class="text-lg font-semibold text-[#4a4a4a7]">Location</p>
+    <input type="text" id="location-form" class="min-w-full  mr-0.5 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]">
+</div>
+<div>
+  <p class="text-lg font-semibold text-[#4a4a4a7]">Category</p>
+  <input type="text" id="category-form" class="min-w-full  mr-0.5 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]">
+</div>
+<div>
+  <p class="text-lg font-semibold text-[#4a4a4a7]">Señority</p>
+  <input type="text" id="señority-form" class="min-w-full  mr-0.5 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]">
+</div>
+<div>
+  <p class="text-lg font-semibold text-[#4a4a4a7]">Salary</p>
+  <input type="number" id="salary-form" class="min-w-full  mr-0.5 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]">
+</div>
+<p class="text-lg font-semibold text-[#4a4a4a7]">Image</p>
+  <input type="url" src="" id="image-form" class="min-w-full  mr-4 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]">
+<div>
+
+<div >
+   <p class="text-lg font-semibold text-slate-700">Benefits</p>
+<div class="flex flex-row  ">
+  <div>
+  <p class="text-lg font-semibold text-[#4a4a4a7] ">Vacation</p>
+  <input type="text" id="vacation-form" class="w-[250px] mr-2 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]">
+  </div>
+ <div>
+  <p class="text-lg font-semibold text-[#4a4a4a7]">Health ensurance</p>
+  <input type="text" id="health-form" class="max-w-md ... mr-2 mb-6 mt-2 border-solid border-2 border-[#4a4a4a7]">
+  </div>
+  <div class="flex items-center mr-4">
+     <p for="green-checkbox" class=" text-lg font-semibold text-[#4a4a4a7]">Interned paid</p>
+  <input checked id="internet-form" type="checkbox" value="" class=" ml-2 w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+  <p for="green-checkbox" class="ml-2 text-lg font-semibold text-[#4a4a4a7] ">Long Term</p>
+  <input checked id="long-term" type="checkbox" value="long-term" class="  ml-2 w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+ </div>
+</div>
+</div>
+<div >
+<p class="text-lg mb-2 font-semibold text-[#4a4a4a7]">Languages</p>
+<ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:border-gray-600 dark:text-white">
+    <li class="w-full border-b border-gray-200 sm:border-b-0  dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="javaScript" type="checkbox" value="javaScript" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="javaScript" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">javaScript</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0  dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="react" type="checkbox" value="React" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="react" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 ">React</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="angular" type="checkbox" value="Angular" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="angular" class="w-full py-3 ml-2 text-sm font-medium text-gray-900">Angular</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 dark:border-gray-600">
+      <div class="flex items-center pl-3">
+          <input id="sql" type="checkbox" value="SQL" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+          <label for="sql" class="w-full py-3 ml-2 text-sm font-medium text-gray-900">SQL</label>
+      </div>
+  </li>
+  <li class="w-full border-b border-gray-200 sm:border-b-0 dark:border-gray-600">
+    <div class="flex items-center pl-3">
+        <input id="phyton" type="checkbox" value="Phyton" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+        <label for="phyton" class="w-full py-3 ml-2 text-sm font-medium text-gray-900">Phyton</label>
+    </div>
+</li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="sass" type="checkbox" value="SASS" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="sass" class="w-full py-3 ml-2 text-sm font-medium text-gray-900">SASS</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 dark:border-gray-600">
+      <div class="flex items-center pl-3">
+          <input id="java" type="checkbox" value="Java" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+          <label for="java" class="w-full py-3 ml-2 text-sm font-medium text-gray-900">Java</label>
+      </div>
+  </li>
+  <li class="w-full border-b border-gray-200 sm:border-b-0 dark:border-gray-600">
+    <div class="flex items-center pl-3">
+        <input id="php" type="checkbox" value="Php" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+        <label for="php" class="w-full py-3 ml-2 text-sm font-medium text-gray-900">Php</label>
+    </div>
+</li>
+</ul>
+
+<div id="btn-form" class="flex justify-end">
+<button id="btn-submit" type="button" class="bg-cyan-500 hover:bg-cyan-600 ... p-1 text-slate-50  font-semibold border-double border-2 border-sky-500 rounded " style="margin: 6px;">Submit</button>
+<button id="btn-edit-job"   type="button" class="btn bg-green-700  hover:bg-green-500  text-black font-normal p-1  rounded " style="margin: 6px;"  >Edit</button>
+ </div>
+</form>
+  </div>
+  </div>
+</main>
+</section>
+
+<div class="text-center hidden" role="status" id="spinner">
+  <svg aria-hidden="true" class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-pink-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+      <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+  </svg>
+  <span class="sr-only">Loading...</span>
+</div>
 <script src="js/api.js"> </script>
+<script src="js/main.js"> </script>
+
 
 </body>
 </html>
